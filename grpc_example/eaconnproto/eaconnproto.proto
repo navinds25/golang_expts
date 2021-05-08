@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.eaconnproto";
+option java_outer_classname = "EAProto";
+
+package eaconnproto;
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+
+service Publisher {
+  rpc SendConfig (Config) returns (Ack) {}
+}
+
+message Config {
+  string name = 1;
+  string filename = 2;
+}
+
+message Ack {
+  string valid = 1;
+}
